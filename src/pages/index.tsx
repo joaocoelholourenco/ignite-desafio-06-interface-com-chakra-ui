@@ -17,9 +17,9 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 
-import Header from "../components/Header";
-import Slide from "../components/Slide";
-import TravelTypes from "../components/TravelTypes";
+import { Header } from "../components/Header";
+import { Slide } from "../components/Slide";
+import { TravelTypes } from "../components/TravelTypes";
 
 export default function Home() {
   const isWideVersion = useBreakpointValue({
@@ -28,62 +28,64 @@ export default function Home() {
   });
 
   return (
-    <Flex direction="column" height="100hv">
+    <Flex direction="column">
       <Header />
-      <Flex direction="column" w="100%" maxWidth={1440} mx="auto">
-        <Flex>
-          <Box
-            flex="1"
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-            paddingX={["16px", "80px"]}
-            height={["163px", "210px", "335px"]}
-            backgroundImage={`url("/images/Background-banner.jpg")`}
-            backgroundPosition="center 25%"
-            backgroundSize="cover"
-            backgroundRepeat="no-repeat"
-          >
-            <Flex direction="column">
-              <Text
-                fontSize={["20", "28", "36"]}
-                fontWeight="medium"
-                lineHeight={["30px", "40px", "54px"]}
-                color="#F5F8FA"
-              >
-                5 Continentes,
-                <br /> infinitas possibilidades.
-              </Text>
-              <Text
-                fontWeight="normal"
-                fontSize={["14", "16", "20"]}
-                mt="20px"
-                lineHeight={["21px", "25px", "30px"]}
-                color="#DADADA"
-              >
-                Chegou a hora de tirar do papel a viagem que
-                <br /> você sempre sonhou.
-              </Text>
-            </Flex>
-            {isWideVersion && (
+      <Box
+        width="100%"
+        height={["163px", "210px", "335px"]}
+        backgroundImage={`url("/images/Background-banner.jpg")`}
+        backgroundPosition="center 25%"
+        backgroundSize="cover"
+        backgroundRepeat="no-repeat"
+      >
+        <Flex
+          mx="auto"
+          height="100%"
+          maxWidth={1440}
+          justifyContent="space-between"
+          paddingX={["16px", "80px"]}
+        >
+          <Flex direction="column" justify="center">
+            <Text
+              fontSize={["20", "28", "36"]}
+              fontWeight="medium"
+              lineHeight={["30px", "40px", "54px"]}
+              color="#F5F8FA"
+            >
+              5 Continentes,
+              <br /> infinitas possibilidades.
+            </Text>
+            <Text
+              fontWeight="normal"
+              fontSize={["14", "16", "20"]}
+              mt="20px"
+              lineHeight={["21px", "25px", "30px"]}
+              color="#DADADA"
+            >
+              Chegou a hora de tirar do papel a viagem que
+              <br /> você sempre sonhou.
+            </Text>
+          </Flex>
+          {isWideVersion && (
+            <Flex pt="76px">
               <Image
                 height={290}
                 width={431}
-                display="flex"
-                justifyContent="flex-end"
-                mt={90}
-                right="80px"
+                top="76px"
                 src="./images/Airplane.svg"
                 alt="Avião"
               />
-            )}
-          </Box>
+            </Flex>
+          )}
         </Flex>
+      </Box>
+      <Flex direction="column" w="100%" mx="auto" maxWidth={1440}>
         <Wrap
           as="section"
           justify="space-between"
           mx={["50px", "140px"]}
-          my={["50px", "90px"]}
+          my={["36px", "90px"]}
+          mt={["9px"]}
         >
           <TravelTypes img="./images/cocktail.svg" title="vida nortuna" />
           <TravelTypes img="./images/surf.svg" title="praia" />
@@ -93,8 +95,9 @@ export default function Home() {
         </Wrap>
         <Flex flex="1" justify="center">
           <Divider
-            border="2px solid "
-            width="90px"
+            borderBottom="none"
+            border={["", "1px solid"]}
+            width={["60px", "90px"]}
             opacity={1}
             borderColor="#47585B"
           />
@@ -104,25 +107,31 @@ export default function Home() {
           direction="column"
           flex="1"
           alignItems="center"
-          mt="52px"
+          mt={["24px", "52px"]}
         >
           <Text textAlign="center" fontWeight="medium" fontSize={[20, 36]}>
             Vamos nessa? <br /> Então escolha seu continente
           </Text>
-          <Flex width="100%" mb="40px" mt="52px" justify="center">
+          <Flex
+            width="100%"
+            maxWidth="1240px"
+            mb={["24px", "40px"]}
+            mt={["20px", "52px"]}
+            justify="center"
+          >
             <Swiper
-              modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+              modules={[Navigation, Pagination, Autoplay]}
               slidesPerView={1}
               navigation
+              autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
               pagination={{
                 clickable: true,
               }}
               scrollbar={{ draggable: true }}
-              onSwiper={(swiper) => console.log(swiper)}
-              onSlideChange={() => console.log("slide change")}
             >
               <SwiperSlide>
                 <Slide
+                  url="europa"
                   img="./images/europa.png"
                   title="Europa"
                   subtitle="o continente mais antigo."
@@ -130,6 +139,7 @@ export default function Home() {
               </SwiperSlide>
               <SwiperSlide>
                 <Slide
+                  url="americadonorte"
                   img="./images/americadonorte.jpg"
                   title="América do Norte"
                   subtitle="o continente mais antigo."
@@ -137,6 +147,7 @@ export default function Home() {
               </SwiperSlide>
               <SwiperSlide>
                 <Slide
+                  url="americadosul"
                   img="./images/americadosul.jpg"
                   title="América do Sul"
                   subtitle=" a maior biodiversidade do mundo."
@@ -144,6 +155,7 @@ export default function Home() {
               </SwiperSlide>
               <SwiperSlide>
                 <Slide
+                  url="asia"
                   img="./images/asia.jpg"
                   title="Ásia"
                   subtitle="o continente mais antigo."
@@ -151,6 +163,7 @@ export default function Home() {
               </SwiperSlide>
               <SwiperSlide>
                 <Slide
+                  url="africa"
                   img="./images/africa.jpg"
                   title="África"
                   subtitle="o continente mais antigo."
@@ -158,6 +171,7 @@ export default function Home() {
               </SwiperSlide>
               <SwiperSlide>
                 <Slide
+                  url="oceania"
                   img="./images/oceania.jpg"
                   title="Oceania"
                   subtitle="o continente mais antigo."

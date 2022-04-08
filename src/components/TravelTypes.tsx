@@ -13,7 +13,7 @@ interface TravelTypesProps {
   title: string;
 }
 
-export default function TravelTypes({ img, title }: TravelTypesProps) {
+export function TravelTypes({ img, title }: TravelTypesProps) {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
@@ -29,12 +29,12 @@ export default function TravelTypes({ img, title }: TravelTypesProps) {
           {isWideVersion ? (
             <Image src={img} alt={title} height={85} />
           ) : (
-            <Circle bg="yellow" size="8px" />
+            <Circle bg="yellow" size="8px" mr="8px" mt={5} />
           )}
           <Text
             mt={["18px", "24px"]}
             fontSize={["18px", "24px"]}
-            fontWeight="semibold"
+            fontWeight="medium"
           >
             {title}
           </Text>

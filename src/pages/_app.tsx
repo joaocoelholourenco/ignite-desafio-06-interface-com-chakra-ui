@@ -1,6 +1,8 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "../style/theme";
 
+import "./stylesSwipper.scss";
+
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider resetCSS theme={theme}>
